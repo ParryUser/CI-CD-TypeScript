@@ -1,0 +1,32 @@
+# Version control
+.git
+.gitignore
+
+# IDE
+.idea
+
+# CI/CD
+.github
+
+# Dependencies (will be installed in container)
+node_modules
+
+# Documentation
+README.md
+
+# Tests
+*.test.ts
+
+# Environment files
+.env
+
+# Build artifacts
+dist
+coverage
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Extraneous files
+whatever.java
