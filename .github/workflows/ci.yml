@@ -41,4 +41,7 @@ jobs:
         run: npm ci
 
       - name: Check code format
-        uses: npm run format:check
+        run: npm run format:check
+
+      - name: Lint code base
+        run: npm run lint
