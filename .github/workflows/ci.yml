@@ -41,7 +41,7 @@ jobs:
         run: npm ci
 
       - name: Check code format
-        run: npm run format:check
+        run: npm run format:write -- --check
 
       - name: Lint code base
         run: npm run lint -- --max-warnings=0
