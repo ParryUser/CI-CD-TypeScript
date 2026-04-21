@@ -1,0 +1,25 @@
+name: cd.yml
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      PORT: 8080
+
+    steps:
+      - name: Checkout code base
+        uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v2
+
+      - name: Install all dependencies
+        run: npm ci
+
+      - name: Build project as a whole
+        run: npm run build

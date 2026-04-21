@@ -1,8 +1,8 @@
 name: ci
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+    branches: [tests]
     
 jobs:
   tests:
@@ -12,9 +12,36 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-       
+
       - name: Set up node
         uses: actions/setup-node@v4
-       
-      - name: Install dependencies
+        with:
+          node-version: '20'
+
+      - name: Set up dependencies
         run: npm ci
+
+      - name: Run tests
+        run: npm run test --coverage
+
+  style:
+    name: Formatting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up dependencies
+        run: npm ci
+
+      - name: Check code format
+        run: npm run format:write -- --check
+
+      - name: Lint code base
+        run: npm run lint -- --max-warnings=3
